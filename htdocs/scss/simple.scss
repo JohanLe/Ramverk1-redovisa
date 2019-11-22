@@ -1,0 +1,83 @@
+$heello: "";
+//Simple design based on original dbwebb.se
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,500,600&display=swap');
+@import "../css/dbwebb-se_v2.css";
+@import "verify.scss";
+
+$mainWhite:rgb(255, 251, 248);
+$mainGrey: rgba(233, 233, 237, 0.714);
+
+body {
+    background-color: $mainGrey;
+    font-family: 'Oswald', sans-serif;
+}
+// Main
+
+.inner-wrap-main {
+    width: 100%;
+    padding: 5px;
+}
+// Header
+.inner-wrap-header {
+    background-color:$mainWhite;
+}
+
+
+
+// Footer 
+.outer-wrap-footer{
+    background-color: $mainWhite;
+    .footer-column, .site-footer{
+        color: #333;
+    }
+}
+
+// Block
+.block {
+    padding: 0 6px;
+    background-color: $mainWhite;
+    border-radius: 4px;
+    .h4,.h3,.h2 {
+        padding-top: 4px;
+        background-color: $mainWhite;
+    }
+
+}
+.toc, .region-sidebar-left {
+    background-color: transparent;
+    * {
+        background-color: transparent;
+    }
+
+    .selected{
+        background-color: transparent;
+    }
+    
+}
+
+
+//Page container
+
+.page-container {
+    width: 100%;
+    min-height: 200px;
+    max-height: 98%;
+    padding: 5px;
+    margin: 4px;
+    margin-top: 15px;   
+}
+
+
+
+// General element styles
+a {
+    color: #2e62ba;
+}
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    opacity: 0.85;
+    color: #2e62ba;
+}

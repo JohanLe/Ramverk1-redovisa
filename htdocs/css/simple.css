@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600&display=swap");
+@import "../css/dbwebb-se_v2.css";
+.basic-form {
+  width: 50%;
+  min-height: 150px;
+  max-height: 48%;
+  float: left;
+}
+.basic-form label {
+  display: block;
+}
+.basic-form input {
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.text-listed {
+  margin-top: 10px;
+}
+.text-listed h5 {
+  text-decoration: none;
+  border: none;
+}
+.text-listed span, .text-listed a, .text-listed p {
+  display: block;
+  margin: 0px;
+}
+
+body {
+  background-color: rgba(233, 233, 237, 0.714);
+  font-family: "Oswald", sans-serif;
+}
+
+.inner-wrap-main {
+  width: 100%;
+  padding: 5px;
+}
+
+.inner-wrap-header {
+  background-color: #fffbf8;
+}
+
+.outer-wrap-footer {
+  background-color: #fffbf8;
+}
+.outer-wrap-footer .footer-column, .outer-wrap-footer .site-footer {
+  color: #333;
+}
+
+.block {
+  padding: 0 6px;
+  background-color: #fffbf8;
+  border-radius: 4px;
+}
+.block .h4, .block .h3, .block .h2 {
+  padding-top: 4px;
+  background-color: #fffbf8;
+}
+
+.toc, .region-sidebar-left {
+  background-color: transparent;
+}
+.toc *, .region-sidebar-left * {
+  background-color: transparent;
+}
+.toc .selected, .region-sidebar-left .selected {
+  background-color: transparent;
+}
+
+.page-container {
+  width: 100%;
+  min-height: 200px;
+  max-height: 98%;
+  padding: 5px;
+  margin: 4px;
+  margin-top: 15px;
+}
+
+a {
+  color: #2e62ba;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.85;
+  color: #2e62ba;
+}
+
+/*# sourceMappingURL=simple.css.map */
