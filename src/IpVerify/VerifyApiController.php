@@ -27,16 +27,9 @@ class VerifyApiController implements ContainerInjectableInterface
     public function indexAction() : string
     {
         
-        // DO THE MAGIC HERE WITH json stuff and stuff
         
-        return "Welcome to the api.</br> </br>
-         Returns a json-formated string.</br> </br>" .
-               "
-        Usage: </br>
-        - /api/json/*ipadress*    </br>
-        - /api/prettyJson/*ipadress*   (Only for easy to read json in browser)</br> </br>
-    
-         - Example: /api/json/2a03:2880:f003:c07:face:b00c::2 ";
+        
+        return "Welcome to the api.</br> </br>Returns a json-formated string.</br> </br>Usage: </br>- /api/json/*ipadress*    </br>- /api/prettyJson/*ipadress*   (Only for easy to read json in browser)</br> </br> - Example: /api/json/2a03:2880:f003:c07:face:b00c::2 ";
     }
 
     public function jsonActionGet($ipadress = false) : string
