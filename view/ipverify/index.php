@@ -30,27 +30,24 @@ namespace Anax\View;
 <?php 
 
     if($data != null && $data["valid"]) : ?>
-    <div class="valid">
-    <ul>
-    <li>Ip: <?= $data["ip"] ?> </li>
-    <li>Domain: <?= $data["domainInfo"]['domain'] ?> </li>
-     <li>Country: <?= $data["domainInfo"]['country'] ?> </li>
-     <li>Isp: <?= $data["domainInfo"]['isp'] ?> </li>
-     <li>Orgin: <?= $data["domainInfo"]['org'] ?> </li>
-     <li>As: <?= $data["domainInfo"]['as'] ?> </li>
-    </ul>
 
-     <div>
-    <? 
-    elseif ($data != null and !$data['valid']): ?>
-    <div class="not-valid">
-    <p>Not a valid IP-adress.</p>
-    </div>
+        <div class="valid">
+        <ul>
+        <li>Ip: <?= $data["ip"] ?> </li>
+        <li>Domain: <?= $data["domainInfo"]['domain'] ?> </li>
+        <li>Country: <?= $data["domainInfo"]['country'] ?> </li>
+        <li>Isp: <?= $data["domainInfo"]['isp'] ?> </li>
+        <li>Orgin: <?= $data["domainInfo"]['org'] ?> </li>
+        <li>As: <?= $data["domainInfo"]['as'] ?> </li>
+        </ul>
 
-<?
+        <div>
+    <? elseif($data != null && !$data['valid']): ?>
+        <div class="not-valid">
+        <p>Not a valid IP-adress.</p>
+        </div>
 
-endif;
-?>
+<?php endif; ?>
 
 <div class="text-listed">
     <h5>  The api: </h5>

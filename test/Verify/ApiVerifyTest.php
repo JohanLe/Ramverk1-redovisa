@@ -42,7 +42,7 @@ class ApiVerifyTest extends TestCase
         $this->assertContains('"status":"fail"', $res);
     }
 
-                    /**
+    /**
      * Fail IPV4
      * Not valid ipadress format.
      */
