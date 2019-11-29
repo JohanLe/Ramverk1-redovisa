@@ -7,7 +7,7 @@ return [
         [
             "info" => "Style chooser.",
             "mount" => "api",
-            "handler" => "\Anax\IpVerify\VerifyApiController",
+            "handler" => "\Anax\IpVerify\ApiController",
         ],
     ]
 ];

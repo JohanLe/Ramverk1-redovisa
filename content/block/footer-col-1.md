@@ -1,3 +1,8 @@
-#### Footer col 1
+#### Editor
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Visual Code Studio - </br>
+Väldigt enkel att använda, många bra funktioner & hjälpmedel </br>
+Använde Jetbrains PHPSTORM tidigare, rekommenderas
+(gratis för studenter)
+
+

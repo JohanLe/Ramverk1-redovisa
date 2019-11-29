@@ -44,6 +44,11 @@ return [
             "title" => "Verify IP",
         ],
         [
+            "text" => "Verify V2",
+            "url" => "verify_geo",
+            "title" => "Verify IP - GEO",
+        ],
+        [
             "text" => "Verktyg",
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",

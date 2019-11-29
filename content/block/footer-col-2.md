@@ -1,3 +1,6 @@
-#### Footer col 2
+#### Halmstad
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Sommarstad </br>
+Golf </br>
+Sol & bad </br>
+Lugnt & skönt </br>
