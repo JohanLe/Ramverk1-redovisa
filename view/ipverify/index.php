@@ -27,9 +27,7 @@ namespace Anax\View;
     <input type="Submit" value="Check Json" name="submitJson">
 </form>
 
-<?php 
-
-    if($data != null && $data["valid"]) : ?>
+<?php if($data != null && $data["valid"]) : ?>
 
         <div class="valid">
         <ul>
@@ -60,11 +58,11 @@ namespace Anax\View;
 
 <div class="text-listed">
     <h5>  Test routes: </h5>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api/json/66.220.144.0">66.220.144.0 (Ipv4)</a>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api/json/64.233.160.0">64.233.160.0 (Ipv4)</a>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api/json/44.124.22.22"> 44.124.22.22 (Ipv4)</a>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api/json/2a03:2880:f003:c07:face:b00c::2">2a03:2880:f003:c07:face:b00c::2    (Ipv6)</a>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api/prettyJson/2a03:2880:f003:c07:face:b00c::2">2a03:2880:f003:c07:face:b00c::2     (Ipv6, pretty)</a>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api/json/66.220.144.0">66.220.144.0 (Ipv4)</a>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api/json/64.233.160.0">64.233.160.0 (Ipv4)</a>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api/json/44.124.22.22"> 44.124.22.22 (Ipv4)</a>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api/json/2a03:2880:f003:c07:face:b00c::2">2a03:2880:f003:c07:face:b00c::2    (Ipv6)</a>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api/prettyJson/2a03:2880:f003:c07:face:b00c::2">2a03:2880:f003:c07:face:b00c::2     (Ipv6, pretty)</a>
 
 
 </div>

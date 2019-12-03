@@ -18,7 +18,7 @@
     </form>
 
     <div class="show-content-v2">
-        <?php if($data['ipData']) : ?>
+        <?php if($data['ipData']): ?>
             <table>
                 <tr>                
                     <th>Ip  </th>
@@ -39,7 +39,7 @@
                 </tr>
 
             </table>
-        <? endif; ?> 
+        <?php endif; ?> 
     </div>
 
     <div class="info-box">
@@ -52,10 +52,10 @@
     <p>
         Test routes:
     </p>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api-geo/json/a03:2880:f003:c07:face:b00c::2">IP: 2a03:2880:f003:c07:face:b00c::2</a> </br>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api-geo/json/2001:4860:4860::8888">IP: 2001:4860:4860::8888 </a> </br>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api-geo/json/2001:4860:4860::8844">IP: 2001:4860:4860::8844</a> </br>
-    <a href="http://localhost:8080/ramverk1/me/redovisa/htdocs/api-geo/json/213.112.139.9">IP: 213.112.139.9</a> </br>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api-geo/json/a03:2880:f003:c07:face:b00c::2">IP: 2a03:2880:f003:c07:face:b00c::2</a> </br>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api-geo/json/2001:4860:4860::8888">IP: 2001:4860:4860::8888 </a> </br>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api-geo/json/2001:4860:4860::8844">IP: 2001:4860:4860::8844</a> </br>
+    <a href="http://www.student.bth.se/~joll18/dbwebb-kurser/ramverk1/me/redovisa/htdocs/api-geo/json/213.112.139.9">IP: 213.112.139.9</a> </br>
     </div>
 
 </div>
