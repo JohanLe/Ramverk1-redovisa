@@ -1,8 +1,8 @@
 #### Editor
 
-Visual Code Studio - </br>
+<b>Visual Code Studio - </b></br>
 Väldigt enkel att använda, många bra funktioner & hjälpmedel </br>
-Använde Jetbrains PHPSTORM tidigare, rekommenderas
+Använde Jetbrains <b>PHPStorm </b>tidigare, rekommenderas
 (gratis för studenter)
 
 

@@ -65,7 +65,7 @@ class IpVerifyController implements ContainerInjectableInterface
 
        
         // 2a03:2880:f003:c07:face:b00c::2 Facebook
-        // 2001:4860:4860::8888 2001:4860:4860::8844 google
+        // 2001:4860:4860::8888   |  2001:4860:4860::8844 google
 
 
         if($request->getPost("submitJson")){

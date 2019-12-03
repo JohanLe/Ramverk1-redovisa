@@ -7,7 +7,7 @@ return [
         [
             "info" => "VerifyController v2",
             "mount" => "verify_geo",
-            "handler" => "\Anax\Verify_v2\VerifyController",
+            "handler" => "\Anax\Verify\VerifyController",
         ],
     ]
 ];

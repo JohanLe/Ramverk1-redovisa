@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Anax\IpVerify;
 
 use PHPUnit\Framework\TestCase;
@@ -12,14 +11,16 @@ class ApiVerifyTest extends TestCase
 {
 
     // API controller
-
+    
     public function testindexAction(){
 
         $controller = new VerifyApiController();
 
         $res = $controller->indexAction();
         $this->assertContains("Welcome to the api.</br> </br>Returns a json-formated string.</br> </br>Usage: </br>- /api/json/*ipadress*    </br>- /api/prettyJson/*ipadress*   (Only for easy to read json in browser)</br> </br> - Example: /api/json/2a03:2880:f003:c07:face:b00c::2 ", $res);
+        
     }
+
     /**
      * Empty string / No string
      * 
