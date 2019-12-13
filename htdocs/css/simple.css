@@ -33,6 +33,51 @@
   min-height: 300px;
 }
 
+.weather-report-container {
+  width: 100%;
+  overflow: auto;
+}
+.weather-report-container h1,
+.weather-report-container h2,
+.weather-report-container h3,
+.weather-report-container h4,
+.weather-report-container h5,
+.weather-report-container h6 {
+  text-decoration: none;
+  border: none;
+}
+
+.weather-day-container {
+  width: 100%;
+  display: block;
+  height: 60px;
+}
+
+.header {
+  border-bottom: 1px solid grey;
+}
+
+.weather-data-point {
+  display: inline-block;
+  width: 23%;
+  text-align: center;
+}
+.weather-data-point .upper {
+  display: block;
+  width: 100%;
+  height: 46%;
+}
+.weather-data-point .lower {
+  display: block;
+  width: 100%;
+  height: 46%;
+  opacity: 0.7;
+}
+
+#mapid {
+  height: 250px;
+}
+
 body {
   background-color: rgba(233, 233, 237, 0.714);
   font-family: "Oswald", sans-serif;
