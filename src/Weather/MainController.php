@@ -33,18 +33,18 @@ class MainController implements ContainerInjectableInterface
         $session = $this->di->get("session");
         $page = $this->di->get("page");
         $request = $this->di->get("request");
-
-        
-
         $storage = new Storage();
 
-        $weatherData = $session->get("forecast") ?? [];
+        $forecast = $session->get("forecast") ?? [];
+        $observedWeather = $session->get("observedWeather") ?? [];
         $location = $session->get("location") ?? " ";
-        
         $cords = $request->getGet("cords") ?? false;
+
+   
         $data = [
-            "weather"=>$weatherData,
+            "weather"=>$forecast,
             "location"=> $location,
+            "observedWeather" =>$observedWeather
         ];
 
         $msg = [
@@ -91,15 +91,23 @@ class MainController implements ContainerInjectableInterface
         $cords;
         $weather;
 
+        
+       
         if($valid){
             $cords = json_decode($geoMap->get($ipa));
             if($cords){
                 $weather = $weatherHandler->getDailyForecast($cords->latitude,$cords->longitude);
-                if($weather){
+                
+                $observedWeather = $weatherHandler->getObservedWeather($cords->latitude,$cords->longitude);
+      
+                if($weather && $observedWeather){
                     //             Data , (key) , saving method (temp)
                     $weather = $weatherHandler->formatDailyForecast($weather->daily->data);
-
+                
+                    //$observedWeather = $weatherHandler->formatPreviusWeatherData($observedWeather);
                     $storage->saveForecast($weather, "forecast", $session);
+                   // $storage->saveForeCast($observedWeather, "observedWeather", $session);
+              
                     $storage->saveLocation(
                         [
                         "latitude"=>$cords->latitude,
@@ -121,6 +129,7 @@ class MainController implements ContainerInjectableInterface
             return $response->redirect("weather?cords=false&msg=Ip adress not valid.");
         }
 
+       
         return $response->redirect("weather?cords=false");
 
     }

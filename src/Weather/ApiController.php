@@ -32,21 +32,17 @@ class ApiController implements ContainerInjectableInterface
                 $weather = $weatherHandler->getDailyForecast($cords->latitude,$cords->longitude);
 
                 if($weather){
-                    //             Data , (key) , saving method (temp)
                     $weather = $weatherHandler->formatDailyForecast($weather->daily->data);
                     $result = json_encode($weather, JSON_PRETTY_PRINT);
                 }else{
-                   // Felmeddelande från $weather - 
-                    // Ändra i weatherhandler till att skicka mer än false
                     return "Failed to gather weather data";
                 }
             }else{
-                // Spara undranFelmeddelande - hämta från cords ->error / ['error']
-                // SAVE ->$cords['error']
+
                 return "Failed to get cordinates";
             }
         }else{
-            //Felmeddelande - Felaktig ip adress
+
             return "Ip adress is not valid";
         }
 

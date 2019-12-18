@@ -74,6 +74,30 @@
   opacity: 0.7;
 }
 
+.observed-weather {
+  width: 100%;
+}
+.observed-weather .observed-day {
+  width: 19%;
+  margin: 2px;
+  margin-bottom: 10px;
+  float: left;
+  border-bottom: 1px solid #949494;
+  height: 155px;
+  text-align: center;
+}
+.observed-weather .observed-day .observed-data-point {
+  width: 100%;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.observed-weather .lower {
+  width: 100%;
+  opacity: 0.7;
+  font-size: 12px;
+}
+
 #mapid {
   height: 250px;
 }

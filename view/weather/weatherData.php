@@ -36,6 +36,20 @@
 
 <?php endforeach; ?>
 
+<div class="observed-weather">
+    <h4>Last 30 days: </h4>
+<?php foreach($data['observedWeather'] as $day) : ?>
+        <div class="observed-day">
+            <span class="observed-data-point"> <?= $day['date'] ?></span>
+            <span class="observed-data-point"> <?= $day['summary'] ?></span>
+            <span class="observed-data-point lower">Cloud over: </span>
+            <span class="observed-data-point"> <?= $day['cloudCover'] ?></span>
+            <span class="observed-data-point"> <?= $day['temperature'] ?> °C</span>
+            <span class="observed-data-point"> <?= $day['windSpeed']?> m/s </span>
 
+        </div>
+
+    <?php endforeach;?>   
+</div>
 </div>
 
