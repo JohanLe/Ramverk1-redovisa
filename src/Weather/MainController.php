@@ -104,9 +104,9 @@ class MainController implements ContainerInjectableInterface
                     //             Data , (key) , saving method (temp)
                     $weather = $weatherHandler->formatDailyForecast($weather->daily->data);
                 
-                    //$observedWeather = $weatherHandler->formatPreviusWeatherData($observedWeather);
+                    $observedWeather = $weatherHandler->formatPreviusWeatherData($observedWeather);
                     $storage->saveForecast($weather, "forecast", $session);
-                   // $storage->saveForeCast($observedWeather, "observedWeather", $session);
+                    $storage->saveForeCast($observedWeather, "observedWeather", $session);
               
                     $storage->saveLocation(
                         [
