@@ -25,15 +25,26 @@ class ApiController implements ContainerInjectableInterface
         
         $ipa = $request->getGet("ip");
         $valid = $validate->validateIpAdress($ipa);
-        $result = "";
+        $allData = "";
+
         if($valid){
             $cords = json_decode($geoMap->get($ipa));
             if($cords){
                 $weather = $weatherHandler->getDailyForecast($cords->latitude,$cords->longitude);
+                $observedWeather = $weatherHandler->getObservedWeather($cords->latitude,$cords->longitude);
 
-                if($weather){
+                if($weather && $observedWeather){
                     $weather = $weatherHandler->formatDailyForecast($weather->daily->data);
-                    $result = json_encode($weather, JSON_PRETTY_PRINT);
+                    $observedWeather = $weatherHandler->formatPreviusWeatherData($observedWeather);
+
+                    $allWeatherData = [
+                        "forecast"=> $weather,
+                        "observedWeather"=> $observedWeather
+                    ];
+
+                    $allData = json_encode($allWeatherData, JSON_PRETTY_PRINT);
+
+
                 }else{
                     return "Failed to gather weather data";
                 }
@@ -46,8 +57,7 @@ class ApiController implements ContainerInjectableInterface
             return "Ip adress is not valid";
         }
 
-
-        return $result;
+        return $allData;
     }
     public function documentationAction() : object
     {
