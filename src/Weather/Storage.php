@@ -32,7 +32,7 @@ class Storage implements ContainerInjectableInterface
      */
     public function getForecast($key = "forecast"){
         $session = $this->di->get("session");
-        $data = $session->get($key);
+        $data = $session->get($key) ?? "No data";
         return $data;
     }
 
@@ -42,7 +42,7 @@ class Storage implements ContainerInjectableInterface
      */
     public function getLocation($key = "forecast"){
         $session = $this->di->get("session");
-        $data = $session->get($key);
+        $data = $session->get($key) ?? "No data";
         return $data;
     }
 

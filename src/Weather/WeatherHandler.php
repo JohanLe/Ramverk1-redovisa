@@ -18,28 +18,28 @@ class WeatherHandler {
         $latLong = "$latitude,$longitude";
         $dates = $this->getPreviusThirtyDays(time());
         $settings = "?units=si&exclude=[hourly,minutely,alerts,daily,flags]";
-        $testUrl = "https://api.darksky.net/forecast/26ef698985dfe0ef5692b30380a51e04/42.3601,-71.0589,255657600?exclude=currently,flags";
+      // $testUrl = "https://api.darksky.net/forecast/26ef698985dfe0ef5692b30380a51e04/42.3601,-71.0589,255657600?exclude=currently,flags";
         
-        $mh = curl_multi_init();
+        $mch = curl_multi_init();
         $chAll = [];
 
 
         foreach($dates as $day){
             $ch = curl_init($baseUrl.$latLong.",$day".$settings);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_multi_add_handle($mh, $ch);
+            curl_multi_add_handle($mch, $ch);
             $chAll[] = $ch;
         }
    
         $running = null;
         do {
-          curl_multi_exec($mh, $running);
+          curl_multi_exec($mch, $running);
         } while ($running);
         
         foreach($chAll as $ch){
-            curl_multi_remove_handle($mh, $ch);
+            curl_multi_remove_handle($mch, $ch);
         }
-        curl_multi_close($mh);
+        curl_multi_close($mch);
        
         $result = [];
         foreach($chAll as $ch){

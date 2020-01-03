@@ -4,6 +4,8 @@ namespace Anax\IpVerify;
 
 use PHPUnit\Framework\TestCase;
 
+//require __DIR__ . "/../controllers/Pages.php";
+echo (__DIR__);
 /**
  * Example test class.
  */

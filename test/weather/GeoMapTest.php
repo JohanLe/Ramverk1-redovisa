@@ -17,7 +17,7 @@ class GeoMapTest extends TestCase
 
         $geoMap = new GeoMap();
         $res = $geoMap->get("213.112.139.9");
-        $this->assertContains('ip":"213.112.139.9","type":"ipv4"', $res);
+        $this->assertContains('ip":"213.112.139.9", "type":"ipv4"', $res);
         
     }
     /**
@@ -26,7 +26,7 @@ class GeoMapTest extends TestCase
     public function testGetFilter(){
 
         $geoMap = new GeoMap();
-        $res = $geoMap->get("213.112.139.9","ip,country_name");
+        $res = $geoMap->get("213.112.139.9", "ip,country_name");
         $this->assertContains("", $res);
         
     }

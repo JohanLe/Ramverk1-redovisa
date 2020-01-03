@@ -11,6 +11,15 @@ use PHPUnit\Framework\TestCase;
 class VerifyControllerTest extends TestCase
 {
 
+
+    public function testGet(){
+
+        $this->assertTrue(true);
+        
+    }
+
+
+
     // Verify Controller
     // Fungerar inte precis som med tidigare "huvud controller testen" hittar inte controllern..
     /*

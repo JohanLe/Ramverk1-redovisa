@@ -33,7 +33,7 @@ class MainController implements ContainerInjectableInterface
         $session = $this->di->get("session");
         $page = $this->di->get("page");
         $request = $this->di->get("request");
-        $storage = new Storage();
+       
 
         $forecast = $session->get("forecast") ?? [];
         $observedWeather = $session->get("observedWeather") ?? [];
