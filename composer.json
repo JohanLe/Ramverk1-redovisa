@@ -14,7 +14,9 @@
         "anax/anax-ramverk1-me": "^1.0.0",
         "anax/remserver": "^2.1",
         "johanle/weather": "^1.0",
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "anax/database-active-record": "^2.0",
+        "anax/htmlform": "^2.0"
     },
     "require-dev": {
     }
