@@ -12,5 +12,5 @@ CREATE TABLE Book (
     "id" INTEGER PRIMARY KEY NOT NULL,
     "author" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "image" TEXT,
+    "image" TEXT
 );

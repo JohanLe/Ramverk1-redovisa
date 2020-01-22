@@ -16,7 +16,8 @@
         "johanle/weather": "^1.0",
         "phpunit/phpunit": "^8.5",
         "anax/database-active-record": "^2.0",
-        "anax/htmlform": "^2.0"
+        "anax/htmlform": "^2.0",
+        "anax/anax-cli": "^1.2"
     },
     "require-dev": {
     }
