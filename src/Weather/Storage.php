@@ -12,7 +12,8 @@ class Storage implements ContainerInjectableInterface
     /**
      * @param Array to save, key (optional))
      */
-    public function saveForecast($data, $key = false, $session){
+    public function saveForecast($data, $session, $key = false)
+    {
         //$session = $this->di->get("session");
         $session->set($key, $data);
     }
@@ -20,9 +21,8 @@ class Storage implements ContainerInjectableInterface
     /**
      * @param Data to save, key (optional)
      */
-    public function saveLocation($data, $key = false, $session){
-        //$session = $this->di->get("session");
-
+    public function saveLocation($data, $session, $key = false)
+    {
         $session->set($key, $data);
     }
 
@@ -30,7 +30,8 @@ class Storage implements ContainerInjectableInterface
      * @param String - Key name to gather
      * @return Array - Returns array
      */
-    public function getForecast($key = "forecast"){
+    public function getForecast($key = "forecast")
+    {
         $session = $this->di->get("session");
         $data = $session->get($key) ?? "No data";
         return $data;
@@ -40,10 +41,10 @@ class Storage implements ContainerInjectableInterface
      * @param String - Key name to gather
      * @return Array - Returns array
      */
-    public function getLocation($key = "forecast"){
+    public function getLocation($key = "forecast")
+    {
         $session = $this->di->get("session");
         $data = $session->get($key) ?? "No data";
         return $data;
     }
-
 }

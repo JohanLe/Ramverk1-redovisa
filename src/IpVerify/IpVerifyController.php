@@ -6,8 +6,6 @@ use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Anax\IpVerify\VerifyHelper;
 
-
-
 /**
  * Style chooser controller loads available stylesheets from a directory and
  * lets the user choose the stylesheet to use.
@@ -27,14 +25,9 @@ class IpVerifyController implements ContainerInjectableInterface
      */
     public function indexAction() : object
     {
-    
-        //$response = $this->di->get("response");
-        //$request = $this->di->get("request");
         $session = $this->di->get("session");
         $ipAd = $session->get("ip") ?? null;
         
-    
-
         $data = [
             "data" => $ipAd,
         ];
@@ -44,16 +37,14 @@ class IpVerifyController implements ContainerInjectableInterface
         
         $session->set("ip", null);
         
-        return $page->render([  
-            "title" => "Test",
+        return $page->render([
+            "title" => "Test"
         ]);
-
     }
   
     /**
      * This sample method action it the handler for route:
      * POST mountpoint/create
-     *
      * @return string
      */
     public function indexActionPost() : string
@@ -68,19 +59,17 @@ class IpVerifyController implements ContainerInjectableInterface
         // 2001:4860:4860::8888   |  2001:4860:4860::8844 google
 
 
-        if($request->getPost("submitJson")){
-            // TODO the json file controll stuff.
+        if ($request->getPost("submitJson")) {
             $ipAd = $request->getPost("ipadress") ?? null;
+
             return $response->redirect("api/json/".$ipAd);
-        }
-        else {
-            
+        } else {
             $ipAd = $request->getPost("ipadress") ?? null;
-            if(strlen($ipAd) < 15){
+
+            if (strlen($ipAd) < 15) {
                 $isValid = $verify->verifyIpv4($ipAd) ?? false;
                 $domain = json_decode($verify->getDomainInfo($ipAd)) ?? null;
-            }
-            else {
+            } else {
                 $isValid = $verify->verifyIpv6($ipAd);
                 $domain = json_decode($verify->getDomainInfo($ipAd)) ?? null;
             }
@@ -142,4 +131,3 @@ class IpVerifyController implements ContainerInjectableInterface
         return $args;
     }
 }
-

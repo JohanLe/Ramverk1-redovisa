@@ -6,8 +6,6 @@ use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
 use Anax\IpVerify\VerifyHelper;
 
-
-
 /**
  * Style chooser controller loads available stylesheets from a directory and
  * lets the user choose the stylesheet to use.
@@ -21,7 +19,6 @@ class VerifyApiController implements ContainerInjectableInterface
      * ANY METHOD mountpoint
      * ANY METHOD mountpoint/
      * ANY METHOD mountpoint/index
-     *
      * @return string
      */
     public function indexAction() : string
@@ -33,65 +30,52 @@ class VerifyApiController implements ContainerInjectableInterface
     {
         $verify = new VerifyHelper();
 
-        if(!$ipadress){
+        if (!$ipadress) {
             return   "Not a valid ip-adress";
-        }
-        else if(strlen($ipadress) <= 15  ){
+        } else if (strlen($ipadress) <= 15) {
             $valid = $verify->verifyIpv4($ipadress);
-            if($valid){
+            if ($valid) {
                 $domainInfo = $verify->getDomainInfo($ipadress) ??  null;
                 return $domainInfo;
             };
             return   "Not a valid ip-adress";
-        }
-        else {
+        } else {
             $valid = $verify->verifyIpv6($ipadress);
             
-            if($valid){
-                
+            if ($valid) {
                 $domainInfo = $verify->getDomainInfo($ipadress) ??  null;
                 return $domainInfo;
             };
             return   "Not a valid ip-adress";
         }
-        
         return   "Not a valid ip-adress";
     }
 
     public function prettyJsonActionGet($ipadress = false) : string
     {
-
         $verify = new VerifyHelper();
 
-        if(!$ipadress){
+        if (!$ipadress) {
             return   "Not a valid ip-adress";
-        }
-        else if(strlen($ipadress) <= 15  ){
+        } else if (strlen($ipadress) <= 15) {
             $valid = $verify->verifyIpv4($ipadress);
-            if($valid){
+            if ($valid) {
                 $domainInfo = $verify->prettyJsonForHtml(json_decode($verify->getDomainInfo($ipadress)) ??  null);
                 return $domainInfo;
             };
-            return   "Not a valid ip-adress";
-        }
-        else {
+            return "Not a valid ip-adress";
+        } else {
             $valid = $verify->verifyIpv6($ipadress);
             
-            if($valid){
-                
+            if ($valid) {
                 $domainInfo = $verify->prettyJsonForHtml(json_decode($verify->getDomainInfo($ipadress)) ??  null);
                 return $domainInfo;
             };
-            return   "Not a valid ip-adress";
+            return "Not a valid ip-adress";
         }
-        
-        return   "Not a valid ip-adress";
+        return "Not a valid ip-adress";
     }
 
-
-
-
-   
 
     /**
      * Adding an optional catchAll() method will catch all actions sent to the
@@ -106,7 +90,6 @@ class VerifyApiController implements ContainerInjectableInterface
      * @return mixed
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     *
      */
     /*
     public function catchAll(...$args)
@@ -118,4 +101,3 @@ class VerifyApiController implements ContainerInjectableInterface
 
 */
 }
-

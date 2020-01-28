@@ -1,16 +1,17 @@
-<?php 
+<?php
 
 namespace Anax\Weather;
 
-class WeatherHandler {
+class WeatherHandler
+{
     public $url = "https://api.darksky.net/forecast/26ef698985dfe0ef5692b30380a51e04/";
 
     /**
      * Multicurl
      */
-    public function getObservedWeather($latitude = 56.67446, $longitude = 12.85676){
-  
-        /* TODO: 
+    public function getObservedWeather($latitude = 56.67446, $longitude = 12.85676)
+    {
+        /* TODO:
         -  Multi curl anrop. Kolla in time machine request från darksky.
         -  Leverera resultatet till view och api.
         */
@@ -23,8 +24,7 @@ class WeatherHandler {
         $mch = curl_multi_init();
         $chAll = [];
 
-
-        foreach($dates as $day){
+        foreach ($dates as $day) {
             $ch = curl_init($baseUrl.$latLong.",$day".$settings);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_multi_add_handle($mch, $ch);
@@ -33,28 +33,29 @@ class WeatherHandler {
    
         $running = null;
         do {
-          curl_multi_exec($mch, $running);
+            curl_multi_exec($mch, $running);
         } while ($running);
         
-        foreach($chAll as $ch){
+        foreach ($chAll as $ch) {
             curl_multi_remove_handle($mch, $ch);
         }
         curl_multi_close($mch);
        
         $result = [];
-        foreach($chAll as $ch){
+        foreach ($chAll as $ch) {
             $data = curl_multi_getcontent($ch);
             $result[] = $data;
         }
 
-        if(array_key_exists("error", $result)){
+        if (array_key_exists("error", $result)) {
             // Returnera variabel med felmeddelande.
             return false;
         }
         return $result;
     }
 
-    public function getDailyForecast($latitude, $longitude) {
+    public function getDailyForecast($latitude, $longitude)
+    {
         $settings = "?units=si&exclude=[hourly,minutely,alerts,flags]";
         $params = "$latitude,$longitude";
 
@@ -67,26 +68,26 @@ class WeatherHandler {
         curl_close($cUrl);
 
         $result = json_decode($result);
-        if(array_key_exists("error", $result)){
+        if (array_key_exists("error", $result)) {
             // Returnera variabel med felmeddelande.
             return false;
         }
         return $result;
     }
 
-    public function formatDailyForecast($data){
+    public function formatDailyForecast($data)
+    {
         $formated = [];
         $index = 0;
         $day = "";
-        foreach ($data as $value){
-            if($index == 0){
+        foreach ($data as $value) {
+            if ($index == 0) {
                 $day = "Today";
-            }elseif ($index == 1){
+            } elseif ($index == 1) {
                 $day = "Tomorrow";
-            }else {
+            } else {
                 $day = date("D", $value->time);
             }
-            
             $forcast = [
                 "day" => $day,
                 "date" => date("d M", $value->time),
@@ -97,18 +98,17 @@ class WeatherHandler {
             ];
             array_push($formated, $forcast);
             $index ++;
-        } 
-        
+        }
         return $formated;
     }
     
-    public function formatPreviusWeatherData($data){
+    public function formatPreviusWeatherData($data)
+    {
         $formated = [];
-  
-        
-        foreach ($data as $value){
+
+        foreach ($data as $value) {
             $value = json_decode($value);
-            $currently = $value->currently;  
+            $currently = $value->currently;
             $forcast = [
                 "date" => date("d M", $currently->time),
                 "summary" => $currently->summary,
@@ -117,8 +117,7 @@ class WeatherHandler {
                 "cloudCover" => $currently->cloudCover
             ];
             array_push($formated, $forcast);
-        } 
-        
+        }
         return $formated;
     }
 
@@ -127,14 +126,14 @@ class WeatherHandler {
      * Returns array of unix time stamps of 30 days prior to $date
      * @return Array[int]
      */
-    public function getPreviusThirtyDays($date){
+    public function getPreviusThirtyDays($date)
+    {
         $previusDays = [];
         $current = $date;
-        for($i=0; $i<30; $i++){
+        for ($i=0; $i<30; $i++) {
             array_push($previusDays, $current);
             $current -= 86400;
         }
         return $previusDays;
     }
-
 }

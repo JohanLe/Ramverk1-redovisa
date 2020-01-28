@@ -4,11 +4,9 @@ namespace Anax\Weather;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-
 use Anax\Weather\Storage;
 
-
-/**
+/*
  * Style chooser controller loads available stylesheets from a directory and
  * lets the user choose the stylesheet to use.
  */
@@ -29,7 +27,6 @@ class MainController implements ContainerInjectableInterface
 
     public function indexAction() : object
     {
-
         $session = $this->di->get("session");
         $page = $this->di->get("page");
         $request = $this->di->get("request");
@@ -54,27 +51,23 @@ class MainController implements ContainerInjectableInterface
         
         $page->add("weather/index", $msg);
         
-        if($cords != "false" && $cords){
+        if ($cords != "false" && $cords) {
             $getCords = explode(",", $cords);
-            $cords = 
-            [
+            $cords = [
             "lat"=> $getCords[0],
             "long"=>$getCords[1]
             ];
             $page->add("weather/weatherData", $data);
-            $page->add("weather/map",$cords);
+            $page->add("weather/map", $cords);
         }
 
-        return $page->render([  
+        return $page->render([
             "title" => "Weather",
         ]);
     }
 
-
-
-
-    public function ipadressActionPost() : string {
-
+    public function ipadressActionPost() : string
+    {
         $response = $this->di->get("response");
         $request = $this->di->get("request");
         $session = $this->di->get("session");
@@ -91,17 +84,14 @@ class MainController implements ContainerInjectableInterface
         $cords;
         $weather;
 
-        
-       
-        if($valid){
+        if ($valid) {
             $cords = json_decode($geoMap->get($ipa));
-            if($cords){
-                $weather = $weatherHandler->getDailyForecast($cords->latitude,$cords->longitude);
+            if ($cords) {
+                $weather = $weatherHandler->getDailyForecast($cords->latitude, $cords->longitude);
                 
-                $observedWeather = $weatherHandler->getObservedWeather($cords->latitude,$cords->longitude);
+                $observedWeather = $weatherHandler->getObservedWeather($cords->latitude, $cords->longitude);
       
-                if($weather && $observedWeather){
-                    //             Data , (key) , saving method (temp)
+                if ($weather && $observedWeather) {
                     $weather = $weatherHandler->formatDailyForecast($weather->daily->data);
                 
                     $observedWeather = $weatherHandler->formatPreviusWeatherData($observedWeather);
@@ -116,27 +106,16 @@ class MainController implements ContainerInjectableInterface
                         "location",
                         $session
                     );
-
-                    return $response->redirect("weather?cords=$cords->latitude,$cords->longitude");
-            }
-                else{
+                    return $response->redirect("weather?cords=$cords->latitude, $cords->longitude");
+                } else {
                     return $response->redirect("weather?cords=false&msg=Failed to get weather data");
                 }
-            }else{
+            } else {
                 return $response->redirect("weather?cords=false&msg=Failed to get cordinates");
             }
-        }else{
+        } else {
             return $response->redirect("weather?cords=false&msg=Ip adress not valid.");
         }
-
-       
         return $response->redirect("weather?cords=false");
-
     }
-
-
-
-
-
 }
-

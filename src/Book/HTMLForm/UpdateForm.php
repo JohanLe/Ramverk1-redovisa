@@ -34,16 +34,20 @@ class UpdateForm extends FormModel
                     "value" => $book->id,
                 ],
 
-                "column1" => [
+                "title" => [
                     "type" => "text",
                     "validation" => ["not_empty"],
-                    "value" => $book->column1,
+                    "value" => $book->title,
                 ],
 
-                "column2" => [
+                "author" => [
                     "type" => "text",
                     "validation" => ["not_empty"],
-                    "value" => $book->column2,
+                    "value" => $book->author,
+                ],
+                "image" => [
+                    "type" => "text",
+                    "value" => $book->image,
                 ],
 
                 "submit" => [
@@ -65,7 +69,6 @@ class UpdateForm extends FormModel
      * Get details on item to load form with.
      *
      * @param integer $id get details on item with id.
-     * 
      * @return Book
      */
     public function getItemDetails($id) : object

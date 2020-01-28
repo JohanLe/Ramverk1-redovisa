@@ -8,8 +8,6 @@ use Anax\Commons\ContainerInjectableTrait;
 use Anax\Verify\Verify;
 use Anax\Verify\GeoMap;
 
-
-
 /**
  * Style chooser controller loads available stylesheets from a directory and
  * lets the user choose the stylesheet to use.
@@ -38,13 +36,13 @@ class VerifyController implements ContainerInjectableInterface
             "hasData"=>true,
             "ipData"=>json_decode($session->get("ipData")) ?? null,
             "userIp" => $userData->ip
-        ]; 
+        ];
         
 
         $page->add("verify_v2/index", $data);
         $data = [];
         $session->set("ipData", null);
-        return $page->render([  
+        return $page->render([
             "title" => "Verify-Geo",
         ]);
     }
@@ -66,11 +64,10 @@ class VerifyController implements ContainerInjectableInterface
         $isValid = $verify->validateAdress($ipa);
         $result = $isValid;
 
-        if($isValid){
+        if ($isValid) {
             $filter = "ip,type,longitude,latitude,country_name,continent_name";
             $result = $geoMap->get($ipa, $filter); 
-        }
-        else{
+        } else {
             $result = $isValid;
         }
 
@@ -92,9 +89,4 @@ class VerifyController implements ContainerInjectableInterface
 
         return $response->redirect("api-geo/json/{$ipa}");
     }
-
-
-
-
 }
-

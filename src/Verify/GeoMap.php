@@ -9,40 +9,32 @@ class GeoMap {
     public $accessKey = "a4a9e6e55eec168b4fb53d89f3ebbaf5";
     public $geoUrl = "http://api.ipstack.com/";
 
-
     /**
      *  @return $geoResult - string formated as json
      * 
      */
-public function get($ipa, $filter = null){
+    public function get($ipa, $filter = null)
+    {
+        if($filter) {
+            $geoResult = file_get_contents($this->geoUrl . $ipa . "?access_key=". $this->accessKey ."&output=json&fields=".$filter);
+        }else {
+            $geoResult = file_get_contents($this->geoUrl . $ipa . "?access_key=". $this->accessKey ."&output=json");
+        }
+        return $geoResult;
+    }   
 
-    if($filter){
-        $geoResult = file_get_contents($this->geoUrl . $ipa . "?access_key=". $this->accessKey ."&output=json&fields=".$filter);
+    /**
+     * @param $filter a string with fields to be retreived.
+     * e.g "ip,country_code,type,longitude"
+     * @return $userData as array
+     */
+    public function getUserData($filter = null)
+    {
+        if($filter) {
+            $userData = file_get_contents("http://api.ipstack.com/check?access_key=" . $this->accessKey . "&output=json&fields=".$filter);
+        } else {
+            $userData = file_get_contents("http://api.ipstack.com/check?access_key=" . $this->accessKey . "&output=json");
+        }
+        return json_decode($userData);
     }
-    else {
-        $geoResult = file_get_contents($this->geoUrl . $ipa . "?access_key=". $this->accessKey ."&output=json");
-    }
- 
-    return $geoResult;
-}   
-
-/**
- * @param $filter a string with fields to be retreived.
- * e.g "ip,country_code,type,longitude"
- * @return $userData as array
- */
-public function getUserData($filter = null){
-    if($filter){
-        $userData = file_get_contents("http://api.ipstack.com/check?access_key=" . $this->accessKey . "&output=json&fields=".$filter);
-    }
-    else {
-        $userData = file_get_contents("http://api.ipstack.com/check?access_key=" . $this->accessKey . "&output=json");
-    }
-    return json_decode($userData);
-}
-
-
-
-
-
 }
